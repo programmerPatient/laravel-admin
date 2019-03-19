@@ -12,6 +12,8 @@ Route::group([
 
     $router->get('/', 'HomeController@index');
     $router->resource('users',UserController::class);
+    $router->resource('carName',carNameController::class);
+    $router->resource('carType',carTypeController::class);
 
 });
 

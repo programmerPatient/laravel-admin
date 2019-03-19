@@ -2,7 +2,7 @@
 
 namespace App\Admin\Controllers;
 
-use App\User;
+use App\models\carType;
 use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\HasResourceActions;
 use Encore\Admin\Form;
@@ -10,7 +10,7 @@ use Encore\Admin\Grid;
 use Encore\Admin\Layout\Content;
 use Encore\Admin\Show;
 
-class UserController extends Controller
+class carTypeController extends Controller
 {
     use HasResourceActions;
 
@@ -23,7 +23,7 @@ class UserController extends Controller
     public function index(Content $content)
     {
         return $content
-            ->header('用户列表')
+            ->header('汽车的型号')
             // ->description('description')
             ->body($this->grid());
     }
@@ -79,13 +79,10 @@ class UserController extends Controller
      */
     protected function grid()
     {
-        $grid = new Grid(new User);
+        $grid = new Grid(new carType);
 
         $grid->id('Id');
-        $grid->name('Name');
-        $grid->email('Email');
-        $grid->password('Password');
-        $grid->remember_token('Remember token');
+        $grid->carType('CarType');
         $grid->created_at('Created at');
         $grid->updated_at('Updated at');
 
@@ -100,13 +97,10 @@ class UserController extends Controller
      */
     protected function detail($id)
     {
-        $show = new Show(User::findOrFail($id));
+        $show = new Show(carType::findOrFail($id));
 
         $show->id('Id');
-        $show->name('Name');
-        $show->email('Email');
-        $show->password('Password');
-        $show->remember_token('Remember token');
+        $show->carType('CarType');
         $show->created_at('Created at');
         $show->updated_at('Updated at');
 
@@ -120,12 +114,9 @@ class UserController extends Controller
      */
     protected function form()
     {
-        $form = new Form(new User);
+        $form = new Form(new carType);
 
-        $form->text('name', 'Name');
-        $form->email('email', 'Email');
-        $form->password('password', 'Password');
-        $form->text('remember_token', 'Remember token');
+        $form->text('carType', 'CarType');
 
         return $form;
     }
