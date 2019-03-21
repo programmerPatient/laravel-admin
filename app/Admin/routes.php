@@ -14,6 +14,7 @@ Route::group([
     $router->resource('users',UserController::class);
     $router->resource('carName',carNameController::class);
     $router->resource('carType',carTypeController::class);
+    $router->resource('warehouse',WarehouseController::class);
 
 });
 

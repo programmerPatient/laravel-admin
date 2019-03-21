@@ -15,8 +15,8 @@ class CreateWarehousesTable extends Migration
     {
         Schema::create('warehouses', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('carNames_id');//汽车名称的id
-            $table->integer('carTypes_id');//汽车型号的id
+            $table->integer('carNames_id')->index();//汽车名称的id
+            $table->integer('carTypes_id')->index();//汽车型号的id
             $table->string('image_url');//图片路径
             $table->integer('number');//库存数量
             $table->integer('price');//价格

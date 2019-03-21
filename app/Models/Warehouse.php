@@ -10,12 +10,12 @@ class Warehouse extends Model
 
     public function carType()
     {
-    	return $this->hasMany(carType::class);
+    	return $this->belongsTo(carType::class);
     }
 
 
     public function carName()
     {
-    	return $this->hasMany(carName::class);
+    	return $this->belongsTo(carName::class);
     }
 }

@@ -14,8 +14,8 @@ class carType extends Model
     }
 
 
-    public function Warehouse()
+    public function Warehouses()
     {
-    	return $this->belongsTo(Warehouse::class);
+    	return $this->hasMany(Warehouse::class);
     }
 }
