@@ -13,11 +13,11 @@ class HomeController extends Controller
     public function index(Content $content)
     {
 
-        //return $content
-        //    ->header('填写页面头标题')//填写页面头标题
-        //    ->description('填写页面描述小标题...')//填写页面描述小标题
-            //->row(Dashboard::title())//`row`是`body`方法的别名用来添加页面内容
-            /*->row(function (Row $row) {
+        return $content
+           ->header('填写页面头标题')//填写页面头标题
+           ->description('填写页面描述小标题...')//填写页面描述小标题
+            ->row(Dashboard::title())//`row`是`body`方法的别名用来添加页面内容
+            ->row(function (Row $row) {
 
                 $row->column(4, function (Column $column) {
                     $column->append(Dashboard::environment());
@@ -30,7 +30,7 @@ class HomeController extends Controller
                 $row->column(4, function (Column $column) {
                     $column->append(Dashboard::dependencies());
                 });
-           })*///;
-        return redirect('admin/users');
+           });
+        // return redirect('admin/users');
     }
 }

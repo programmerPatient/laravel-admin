@@ -2,7 +2,8 @@
 
 namespace App\Admin\Controllers;
 
-use App\models\carType;
+use App\Models\carType;
+use App\Models\carName;
 use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\HasResourceActions;
 use Encore\Admin\Form;
@@ -23,8 +24,8 @@ class carTypeController extends Controller
     public function index(Content $content)
     {
         return $content
-            ->header('汽车的型号')
-            // ->description('description')
+            ->header('Index')
+            ->description('description')
             ->body($this->grid());
     }
 
@@ -82,7 +83,10 @@ class carTypeController extends Controller
         $grid = new Grid(new carType);
 
         $grid->id('Id');
-        $grid->carType('CarType');
+        // $grid->carNames_id('汽车名称')->carNames();
+        $grid->carName()->Name('车名');
+        $grid->column('carName.Name','名称');
+        $grid->carType('车型号');
         $grid->created_at('Created at');
         $grid->updated_at('Updated at');
 
@@ -100,6 +104,9 @@ class carTypeController extends Controller
         $show = new Show(carType::findOrFail($id));
 
         $show->id('Id');
+        //$grid->carName_id('CarName id');
+        // $show->carNames->carName;
+        // $grid->column('carName.carName','汽车名称');
         $show->carType('CarType');
         $show->created_at('Created at');
         $show->updated_at('Updated at');
@@ -116,6 +123,7 @@ class carTypeController extends Controller
     {
         $form = new Form(new carType);
 
+        $form->number('carName_id', 'CarName id');
         $form->text('carType', 'CarType');
 
         return $form;

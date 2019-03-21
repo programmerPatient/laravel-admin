@@ -13,8 +13,9 @@ class carTypeTableSeeder extends Seeder
     {
         $faker=Faker\Factory::create();
 
-        for($i=0;$i<100;$i++){
+        for($i=0;$i<200;$i++){
         	App\Models\carType::create([
+                'carNames_id'=>mt_rand(1,200), 
         		'carType'=>$faker->name
         	]);
         }

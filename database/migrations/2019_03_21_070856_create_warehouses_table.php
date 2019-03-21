@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCarTypesTable extends Migration
+class CreateWarehousesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,13 @@ class CreateCarTypesTable extends Migration
      */
     public function up()
     {
-        Schema::create('carTypes', function (Blueprint $table) {
+        Schema::create('warehouses', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('carNames_id')->index();//汽车名称的id
-            $table->string('carType',190)->unique();//汽车型号
-            // $table->integer('num',20);//汽车的数量
+            $table->integer('carNames_id');//汽车名称的id
+            $table->integer('carTypes_id');//汽车型号的id
+            $table->string('image_url');//图片路径
+            $table->integer('number');//库存数量
+            $table->integer('price');//价格
             $table->timestamps();
         });
     }
@@ -29,6 +31,6 @@ class CreateCarTypesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('carTypes');
+        Schema::dropIfExists('warehouses');
     }
 }

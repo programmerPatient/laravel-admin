@@ -81,10 +81,10 @@ class carNameController extends Controller
     {
         $grid = new Grid(new carName);
 
-        $grid->id('Id');
-        $grid->carName('CarName');
-        $grid->created_at('Created at');
-        $grid->updated_at('Updated at');
+        $grid->id('序号');
+        $grid->Name('车名');
+        $grid->created_at('创建时间');
+        $grid->updated_at('更新时间');
 
         return $grid;
     }
@@ -99,10 +99,10 @@ class carNameController extends Controller
     {
         $show = new Show(carName::findOrFail($id));
 
-        $show->id('Id');
-        $show->carName('CarName');
-        $show->created_at('Created at');
-        $show->updated_at('Updated at');
+        $show->id('序号');
+        $show->Name('车名');
+        $show->created_at('创建时间');
+        $show->updated_at('更新时间');
 
         return $show;
     }

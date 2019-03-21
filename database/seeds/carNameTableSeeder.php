@@ -16,7 +16,7 @@ class carNameTableSeeder extends Seeder
 
         for($i=0;$i<300;$i++){
         	App\Models\carName::create([
-        		'carName'=>$faker->name
+        		'Name'=>$faker->name
         	]);
         }
     }
