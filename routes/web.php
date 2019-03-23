@@ -14,3 +14,12 @@
 Route::get('/', function () {
     return view('layouts.app');
 });
+
+
+
+
+Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('password.request');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

@@ -21,10 +21,6 @@ import 'element-ui/lib/theme-chalk/index.css';
 Vue.use(ElementUI);
 
 
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
-Vue.component('content-component', require('./components/ContentComponent.vue'));
-Vue.component('footer-component', require('./components/FooterComponent.vue'));
-Vue.component('header-component', require('./components/HeaderComponent.vue'));
 
 const app = new Vue({
     el: '#app'
