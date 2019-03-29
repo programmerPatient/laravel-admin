@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('layouts.app');
-});
+Route::get('/','CarController@all');
 
 
 
@@ -23,3 +21,15 @@ Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm'
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/carDetail','CarController@index')->name('carDetail');
+/*购物车*/
+Route::get('/shoppingCar','ShoppingCarController@index')->name('shoppingCar');
+Route::delete('/shoppingCar','ShoppingCarController@delete')->name('shoppingCar');
+Route::post('/shoppingCar','ShoppingCarController@put')->name('shoppingCar');
+
+/*用户的个人信息*/
+Route::get('/user/information','UsersController@index')->name('user.information');//展示用户信息
+Route::post('/user/information','UsersController@amend')->name('user.information');//修改用户信息
+Route::get('/user/amend',function(){
+	return view('user.amend',['success'=>'1']);
+})->name('user.amend');

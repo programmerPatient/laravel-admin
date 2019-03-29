@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class WarehouseTableSeeder extends Seeder
+class shoppingCarSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,12 +14,10 @@ class WarehouseTableSeeder extends Seeder
         $faker=Faker\Factory::create();
 
         for($i=0;$i<300;$i++){
-        	App\Models\Warehouse::create([
-                'carNames_id'=>mt_rand(1,200),
-        		 'carTypes_id'=>mt_rand(1,200),
-        		 'image_url'=>'/image',
+        	App\Models\shoppingCar::create([
+        		 'users_id'=>mt_rand(1,200),
+        		 'warehouses_id'=>mt_rand(1,200),
         		 'number'=>mt_rand(1,20000),
-        		 'price'=>mt_rand(0,60000000)
         	]);
         }
     }

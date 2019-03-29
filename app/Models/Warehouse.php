@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Models;
-
+use App\Models\carType;
+use App\Models\carName;
+use App\Models\shopppingCar;
 use Illuminate\Database\Eloquent\Model;
 
 class Warehouse extends Model
@@ -18,4 +20,9 @@ class Warehouse extends Model
     {
     	return $this->belongsTo(carName::class);
     }
+
+    public function shoppingCars()
+    {
+    	
+    return $this->hasMany(shoppingCar::class);}
 }

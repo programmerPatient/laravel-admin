@@ -8334,7 +8334,8 @@ button.close {
 }
 
 body {
-  background-color: #fff;
+  background-color: #f8fafc;
+  text-decoration: none;
 }
 
 .navbar-default {
@@ -8355,6 +8356,10 @@ body {
 .el-main {
   background-color: #fff;
   color: #333;
+}
+
+#home_page {
+  margin-top: 80px;
 }
 
 .el-footer {
