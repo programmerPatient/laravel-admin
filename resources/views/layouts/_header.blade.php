@@ -38,7 +38,7 @@
 
                                 <ul class="dropdown-menu">
                                 	<li><a href="{{ route('user.information') }}">我的信息</a></li>
-                                    <li><a href="#">收货地址</a></li>
+                                    <li><a href="{{ route('user.location') }}">收货地址</a></li>
                                     <li><a href="#">我的订单</a></li>
                                     <li><a href="#">我的收藏</a></li>
                                     <li>

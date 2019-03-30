@@ -33,3 +33,11 @@ Route::post('/user/information','UsersController@amend')->name('user.information
 Route::get('/user/amend',function(){
 	return view('user.amend',['success'=>'1']);
 })->name('user.amend');
+
+
+
+/*用户的收货地址接口*/
+Route::get('/user/location','UsersLocationController@index')->name('user.location');//获取用户已经添加过的收货地址
+Route::post('/user/addlocation','UsersLocationController@put')->name('user.addlocation');//增加新的收货地址
+Route::delete('/user/location','UsersLocationController@delete')->name('user.location');//删除已有的收货地址
+Route::post('/user/location/amend','UsersLocationController@amend')->name('user.location.amend');//修改已有的收货地址
