@@ -22,9 +22,10 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/carDetail','CarController@index')->name('carDetail');
+Route::post('/home','CarController@select')->name('home');
 /*购物车*/
 Route::get('/shoppingCar','ShoppingCarController@index')->name('shoppingCar');
-Route::delete('/shoppingCar','ShoppingCarController@delete')->name('shoppingCar');
+Route::get('/shoppingCar/delete','ShoppingCarController@delete')->name('shoppingCar.delete');
 Route::post('/shoppingCar','ShoppingCarController@put')->name('shoppingCar');
 
 /*用户的个人信息*/
@@ -41,3 +42,8 @@ Route::get('/user/location','UsersLocationController@index')->name('user.locatio
 Route::post('/user/addlocation','UsersLocationController@put')->name('user.addlocation');//增加新的收货地址
 Route::delete('/user/location','UsersLocationController@delete')->name('user.location');//删除已有的收货地址
 Route::post('/user/location/amend','UsersLocationController@amend')->name('user.location.amend');//修改已有的收货地址
+
+
+/*提交订单*/
+Route::get('/user/add/indent','IndentController@add')->name('user.add.indent');
+Route::get('/user/indent','IndentController@index')->name('user.indent');

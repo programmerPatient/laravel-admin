@@ -40,4 +40,56 @@ class CarController extends Controller
         //$carAll=DB::select("select * from warehouses");
     	return view('start',['carAll'=>$carAll]);
     }
+
+    public function select(Request $request)
+    {
+        switch($request->type)
+        {
+            case "价格":
+                $data=Warehouse::where([
+                    'price'=>$request->input
+                ])->paginate();
+                foreach($data as $key=>$val)
+                {
+                    $val->carName = carName::find($val->carNames_id)->Name;
+                    $val->carType = carType::find($val->carTypes_id)->carType;
+                }
+                if(!$data)
+                    return view('start',['carAll'=>$data])->with('select','对不起，未找到该价格的车型！！！');
+                return view('start',['carAll'=>$data])->with('select','查找成功');
+            break;
+            case "车品牌":
+                $carname=carName::where([
+                    'Name'=>$request->input
+                ])->get()->first();
+                $data=Warehouse::where([
+                    'carNames_id'=>$carname->id
+                ])->paginate();
+                foreach($data as $key=>$val)
+                {
+                    $val->carName = carName::find($val->carNames_id)->Name;
+                    $val->carType = carType::find($val->carTypes_id)->carType;
+                }
+                if(!$data)
+                    return view('start',['carAll'=>$data])->with('select','对不起，未找到该价格的车型！！！');
+                return view('start',['carAll'=>$data])->with('select','查找成功');
+            break;
+            case "车型号":
+                $cartype=carType::where([
+                    'carType'=>$request->input
+                ])->get()->first();
+                $data=Warehouse::where([
+                    'carTypes_id'=>$cartype->id
+                ])->paginate();
+                foreach($data as $key=>$val)
+                {
+                    $val->carName = carName::find($val->carNames_id)->Name;
+                    $val->carType = carType::find($val->carTypes_id)->carType;
+                }
+                if(!$data)
+                    return view('start',['carAll'=>$data])->with('select','对不起，未找到该价格的车型！！！');
+                return view('start',['carAll'=>$data])->with('select','查找成功');
+            break;
+        }
+    }
 }

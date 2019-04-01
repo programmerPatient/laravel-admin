@@ -19,7 +19,7 @@ class ShoppingCarController extends Controller
     public function index()
     {
     	$user=Auth::user();
-    	$all=shoppingCar::where(['users_id'=>$user->id])->get();
+    	$all=shoppingCar::where(['users_id'=>$user->id])->paginate(20);
     	foreach($all as $key=>$value)
     	{
     		$value->warehouse=Warehouse::find($value->warehouses_id);

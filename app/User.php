@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use App\Models\shoppingCar;
+use App\Models\Indent;
 
 class User extends Authenticatable
 {
@@ -32,5 +33,10 @@ class User extends Authenticatable
     public function shoppingCars()
     {
         return $this->hasMany(shoppingCar::class);
+    }
+ 
+    public function indent()
+    {
+        return $this->hasMany(Indent::class);
     }
 }

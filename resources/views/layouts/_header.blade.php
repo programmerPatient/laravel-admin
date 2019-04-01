@@ -30,7 +30,7 @@
                             <li><a href="{{ route('register') }}">注册</a></li>
                         @else
                             <li><a href="{{ route('shoppingCar') }}">我的购物车</a></li>
-                            <li><a href="#">余额</a></li>
+                            <li><a href="{{ route('user.indent') }}">我的订单</a></li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
@@ -39,7 +39,6 @@
                                 <ul class="dropdown-menu">
                                 	<li><a href="{{ route('user.information') }}">我的信息</a></li>
                                     <li><a href="{{ route('user.location') }}">收货地址</a></li>
-                                    <li><a href="#">我的订单</a></li>
                                     <li><a href="#">我的收藏</a></li>
                                     <li>
                                         <a href="{{ route('logout') }}"
