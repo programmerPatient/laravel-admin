@@ -103,6 +103,12 @@ class carNameController extends Controller
         $show->Name('车名');
         $show->created_at('创建时间');
         $show->updated_at('更新时间');
+        $show->panel()
+        ->tools(function ($tools) {
+            $tools->disableEdit();
+            // $tools->disableList();
+            $tools->disableDelete();
+        });
 
         return $show;
     }

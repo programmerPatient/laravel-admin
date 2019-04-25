@@ -84,8 +84,6 @@ class UserController extends Controller
         $grid->id('Id');
         $grid->name('Name');
         $grid->email('Email');
-        $grid->password('Password');
-        $grid->remember_token('Remember token');
         $grid->created_at('Created at');
         $grid->updated_at('Updated at');
 

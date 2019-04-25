@@ -84,8 +84,12 @@ class carTypeController extends Controller
 
         $grid->id('Id');
         // $grid->carNames_id('汽车名称')->carNames();
-        $grid->carName()->Name('车名');
-        $grid->column('carName.Name','名称');
+        $grid->carNames_id("汽车品牌")->display(function($carNames_id){
+            $name=carName::find($carNames_id)->Name;
+            return $name;
+        });
+        // $carName=carName::find($carName_id)->Name;
+        // $grid->column('carName','汽车名称');
         $grid->carType('车型号');
         $grid->created_at('Created at');
         $grid->updated_at('Updated at');
@@ -104,12 +108,21 @@ class carTypeController extends Controller
         $show = new Show(carType::findOrFail($id));
 
         $show->id('Id');
+        $show->carNames_id('车名')->as(function ($carNames_id){
+            return carName::findOrFail($carNames_id)->Name;
+        });
         //$grid->carName_id('CarName id');
         // $show->carNames->carName;
         // $grid->column('carName.carName','汽车名称');
-        $show->carType('CarType');
-        $show->created_at('Created at');
-        $show->updated_at('Updated at');
+        $show->carType('汽车类型');
+        $show->created_at('创建时间');
+        $show->updated_at('更新时间');
+        $show->panel()
+        ->tools(function ($tools) {
+            $tools->disableEdit();
+            // $tools->disableList();
+            $tools->disableDelete();
+        });
 
         return $show;
     }

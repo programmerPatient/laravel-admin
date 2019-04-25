@@ -32,10 +32,11 @@
                         </ul>
                     </div>
                     @endif
+                    @if($carAll)
                 	@foreach($carAll as $k=>$value)
 
                 	<div class="col-md-3" style="border:1px solid #d1cfcf;padding:0;margin-top:30px;">
-                		<div class="col-md-12"><img src="http://www.runoob.com/try/demo_source/cinqueterre.jpg" class="img-responsive center-block" alt="Cinque Terre"></div>
+                		<div class="col-md-12"><img src="{{ $value->image_url }}" class="img-responsive center-block" alt="Cinque Terre"></div>
                 		<div class="col-md-12" style="margin-top:20px;">价格：<span  style="color:red">￥{{ $value->price }}</span></div>
                 		<div class="col-md-12" style="margin-top:20px; margin-bottom:20px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;">
                             <p><strong>品牌：</strong>{{ $value->carName }}</p>
@@ -55,6 +56,7 @@
                 	<div class="col-md-8 col-md-offset-3">
                     {{ $carAll->links() }}
                     </div>
+                    @endif
                 </div>
             </div>
         </div>

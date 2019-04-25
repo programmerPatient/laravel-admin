@@ -138,7 +138,7 @@ return [
         // Image and file upload path under the disk above.
         //image和file类型表单元素的上传目录
         'directory' => [
-            'image' => 'images',
+            'image' => '/images',
             'file'  => 'files',
         ],
     ],

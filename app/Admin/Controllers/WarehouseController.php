@@ -3,6 +3,8 @@
 namespace App\Admin\Controllers;
 
 use App\Models\Warehouse;
+use App\Models\carName;
+use App\Models\carType;
 use App\Http\Controllers\Controller;
 use Encore\Admin\Controllers\HasResourceActions;
 use Encore\Admin\Form;
@@ -82,13 +84,19 @@ class WarehouseController extends Controller
         $grid = new Grid(new Warehouse);
 
         $grid->id('Id');
-        $grid->carNames_id('CarNames id');
-        $grid->carTypes_id('CarTypes id');
-        $grid->image_url('Image url');
-        $grid->number('Number');
-        $grid->price('Price');
-        $grid->created_at('Created at');
-        $grid->updated_at('Updated at');
+        $grid->carNames_id("汽车品牌")->display(function($carNames_id){
+            $name=carName::find($carNames_id)->Name;
+            return $name;
+        });
+        $grid->carTypes_id("汽车型号")->display(function($carTypes_id){
+            $name=carType::find($carTypes_id)->carType;
+            return $name;
+        });
+        $grid->image_url('图片地址');
+        $grid->number('库存');
+        $grid->price('价格');
+        $grid->created_at('创建时间');
+        $grid->updated_at('更新时间');
 
         return $grid;
     }
@@ -104,13 +112,17 @@ class WarehouseController extends Controller
         $show = new Show(Warehouse::findOrFail($id));
 
         $show->id('Id');
-        $show->carNames_id('CarNames id');
-        $show->carTypes_id('CarTypes id');
-        $show->image_url('Image url');
-        $show->number('Number');
-        $show->price('Price');
-        $show->created_at('Created at');
-        $show->updated_at('Updated at');
+        $show->carNames_id('汽车品牌')->as(function ($carNames_id){
+             return carName::findOrFail($carNames_id)->Name;
+        });
+        $show->carTypes_id('汽车型号')->as(function ($carTypes_id){
+            return carType::findOrFail($carTypes_id)->carType;
+        });
+        $show->image_url('照片路径');
+        $show->number('库存');
+        $show->price('价格');
+        $show->created_at('创建时间');
+        $show->updated_at('更新时间');
 
         return $show;
     }
@@ -124,9 +136,11 @@ class WarehouseController extends Controller
     {
         $form = new Form(new Warehouse);
 
-        $form->number('carNames_id', 'CarNames id');
-        $form->number('carTypes_id', 'CarTypes id');
-        $form->text('image_url', 'Image url');
+        $form->text('carNames_id', 'CarNames id');
+        // $form->text('carTypes_id', 'CarTypes id')->value('**')->readonly();
+        $form->text('carTypes_id', 'CarTypes id');
+        // $form->text('image_url', 'Image url');
+        $form->image('image_url')->move('/images')->uniqueName();
         $form->number('number', 'Number');
         $form->number('price', 'Price');
 
